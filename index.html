@@ -51,7 +51,20 @@ h1 {
     cursor: pointer;
 }
 
-.location:last-child {
+.route {
+    width: 100%;
+    border: none;
+    background: #ff6b00;
+    color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.location:last-child,
+.route:last-child {
     margin-bottom: 0;
 }
 </style>
@@ -61,12 +74,14 @@ h1 {
 
 <h1>📍 GPS Platser</h1>
 
+<!-- BUKAREST -->
 <div class="city">
     <div class="city-header" onclick="toggleCity('orebro')">
         Bukarest
     </div>
 
     <div id="orebro" class="locations">
+
         <button class="location"
             onclick="openMap('44.124784,24.354971')">
             📍 Mekaniker
@@ -76,15 +91,23 @@ h1 {
             onclick="openMap('59.2800,15.2200')">
             📍 Veterinär
         </button>
+
+        <button class="route"
+            onclick="openRoute('44.124784,24.354971','59.2800,15.2200')">
+            🚗 Mekaniker → Veterinär
+        </button>
+
     </div>
 </div>
 
+<!-- BERLIN -->
 <div class="city">
     <div class="city-header" onclick="toggleCity('hallsberg')">
         Berlin
     </div>
 
     <div id="hallsberg" class="locations">
+
         <button class="location"
             onclick="openMap('59.0656,15.1099')">
             📍 Rastplats
@@ -94,15 +117,18 @@ h1 {
             onclick="openMap('59.0600,15.1200')">
             📍 Rastplats med belysning
         </button>
+
     </div>
 </div>
 
+<!-- HELSINGBORG -->
 <div class="city">
     <div class="city-header" onclick="toggleCity('stockholm')">
         Helsingborg
     </div>
 
     <div id="stockholm" class="locations">
+
         <button class="location"
             onclick="openMap('59.3293,18.0686')">
             📍 Centralstationen
@@ -112,6 +138,7 @@ h1 {
             onclick="openMap('59.3346,18.0632')">
             📍 Kungsträdgården
         </button>
+
     </div>
 </div>
 
@@ -127,8 +154,15 @@ function toggleCity(id) {
 }
 
 function openMap(coords) {
-    location.href =
+    window.location.href =
         "https://www.google.com/maps/search/?api=1&query=" + coords;
+}
+
+function openRoute(origin, destination) {
+    window.location.href =
+        "https://www.google.com/maps/dir/" +
+        origin + "/" +
+        destination;
 }
 </script>
 
