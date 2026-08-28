@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPS Platser</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 15px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.city {
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.city-header {
+    background: #0078d4;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.locations {
+    display: none;
+    padding: 10px;
+}
+
+.location {
+    width: 100%;
+    border: none;
+    background: #28a745;
+    color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.location:last-child {
+    margin-bottom: 0;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📍 GPS Platser</h1>
+
+<div class="city">
+    <div class="city-header" onclick="toggleCity('orebro')">
+        Bukarest
+    </div>
+
+    <div id="orebro" class="locations">
+        <button class="location"
+            onclick="openMap('44.124784,24.354971')">
+            📍 Mekaniker
+        </button>
+
+        <button class="location"
+            onclick="openMap('59.2800,15.2200')">
+            📍 Veterinär
+        </button>
+    </div>
+</div>
+
+<div class="city">
+    <div class="city-header" onclick="toggleCity('hallsberg')">
+        Berlin
+    </div>
+
+    <div id="hallsberg" class="locations">
+        <button class="location"
+            onclick="openMap('59.0656,15.1099')">
+            📍 Rastplats
+        </button>
+
+        <button class="location"
+            onclick="openMap('59.0600,15.1200')">
+            📍 Rastplats med belysning
+        </button>
+    </div>
+</div>
+
+<div class="city">
+    <div class="city-header" onclick="toggleCity('stockholm')">
+        Helsingborg
+    </div>
+
+    <div id="stockholm" class="locations">
+        <button class="location"
+            onclick="openMap('59.3293,18.0686')">
+            📍 Centralstationen
+        </button>
+
+        <button class="location"
+            onclick="openMap('59.3346,18.0632')">
+            📍 Kungsträdgården
+        </button>
+    </div>
+</div>
+
+<script>
+function toggleCity(id) {
+    const box = document.getElementById(id);
+
+    if (box.style.display === "block") {
+        box.style.display = "none";
+    } else {
+        box.style.display = "block";
+    }
+}
+
+function openMap(coords) {
+    location.href =
+        "https://www.google.com/maps/search/?api=1&query=" + coords;
+}
+</script>
+
+</body>
+</html>
